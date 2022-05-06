@@ -1,0 +1,21 @@
+TRAIN:
+[D:\fqh_Workspace\2022-AutoAirCondition\data\home\time_series_data\200111.xlsx]
+1 , HA1:52
+2 , HA2:4
+3 , HA3:16
+4 , LA1:68
+5 , LA2:37
+6 , LA3:26
+7 , LB1:523
+8 , LB3:3633
+9 , MA1:16
+10, MA2:93
+11, MA3:395
+12, unocc:97
+
+TEST:
+[D:\fqh_Workspace\2022-AutoAirCondition\data\home\time_series_data\200110.xlsx]
+5, LA2:11
+6, LA3:11
+7, LB1:237
+12, unocc:11

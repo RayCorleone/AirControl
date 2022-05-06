@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block myjs %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/plotly.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+	<script>
+		$(function(){
+			window.setInterval(function(){
+				reload_myDiv()
+			},500)
+
+			function reload_myDiv(){
+				$.ajax({
+					url: '/update',
+					type: 'POST',
+					dataType: 'json',
+					success: function(data){
+						$(myDiv).replaceWith(data);
+						$(x).change(data.out);
+						$(x).
+					},
+				});
+			}
+		});
+	</script>
+
+	<div class='graph' id='myDiv'>
+		<script>
+			var bars = '{{ context | safe }}';
+			var obj = JSON.parse(bars);
+			Plotly.newPlot('myDiv', obj);
+		</script>
+   </div>
+
+    <div class='graph' id='chart_device'>
+		<script>
+			Plotly.newPlot('chart_device',[{
+				y:[getData()],
+				type:'line'
+			}]);
+
+			var cnt = 0;
+
+			setInterval(function(){
+				Plotly.extendTraces('chart_device',{y:[[getData()]]},[0]);
+
+				cnt = cnt + 1;
+
+				if(cnt>500){
+					Plotly.relayout('chart_device',{
+						xaxis:{range:[cnt-500, cnt]}
+					});
+				}
+			},15);
+		</script>
+   </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+{% endblock %}

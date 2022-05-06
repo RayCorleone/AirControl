@@ -1,0 +1,7 @@
+<div class='graph' id='myDiv'>
+    <script>
+        var bars = '{{ context | safe }}';
+        var obj = JSON.parse(bars);
+        Plotly.relayout('myDiv', obj);
+    </script>
+</div>

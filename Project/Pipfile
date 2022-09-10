@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+tensorflow = "*"
+numpy = "*"
+serial = "*"
+datetime = "*"
+plotly = "*"
+pandas = "*"
+python-dotenv = "*"
+matplotlib = "*"
+keras = "*"
+tensorflow-gpu = "*"
+tflearn = "==0.3.2"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
